@@ -7,6 +7,7 @@ const {
     Triangle
 } = require('./libs/shapes.js'); // Destructuring
 
+
 // This class provides the structure for the SVG logo.
 class renderUserSVG {
     constructor() {
@@ -23,8 +24,11 @@ class renderUserSVG {
         this.svgShape = shape.render();
     };
     setText(text, color) {
-        this.svgText = `<text x="50%" y="50%" font-size="55" text-anchor="middle" dominant-baseline="middle" fill="${color}">${text}</text>`;
+        this.svgText = `<text x="50%" y="50%" font-size="55" text-anchor="middle" dominant-baseline="middle" fill="${color}">${text}</text>`
     };
+    setTextTriangle(text, color) {
+        this.svgText = `<text x="150" y="127" font-size="55" text-anchor="middle" dominant-baseline="middle" fill="${color}">${text}</text>`
+    }
 
     render() {
         return `<svg version="1.1" height="200" width="300" xmlns="http://www.w3.org/2000/svg">${this.svgShape}${this.svgText}</svg>`;
@@ -74,14 +78,16 @@ inquirer
         if (svgShape === 'square') {
             userSquare.setColor(svgShapeColor);
             userSvg.setShape(userSquare);
+            userSvg.setText(svgText, svgTextColor);
         } else if (svgShape === 'circle') {
             userCircle.setColor(svgShapeColor);
             userSvg.setShape(userCircle);
+            userSvg.setText(svgText, svgTextColor);
         } else {
             userTriangle.setColor(svgShapeColor);
             userSvg.setShape(userTriangle);
+            userSvg.setTextTriangle(svgText, svgTextColor);
         };
-        userSvg.setText(svgText, svgTextColor);
 
         fs.writeFile(`./examples/${svgShape}-logo.svg`, userSvg.render(), function (error) {
             error ? console.log(error) : console.log("SVG File Write Success!");
