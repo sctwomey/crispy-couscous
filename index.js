@@ -37,19 +37,19 @@ inquirer
     .prompt([
         {
             type: 'input',
-            message: 'What upper and/or lowercase text would you like for your logo? [Maximum of 3 text characters].',
+            message: 'What upper and/or lowercase text would you like for your logo? [Maximum of 3 text characters]:',
             name: 'svgText',
             validate: textValidation
         },
         {
             type: 'input',
-            message: 'What color would you like for your text characters? [Required]',
+            message: 'What color would you like for your text characters? [Required]:',
             name: 'svgTextColor',
             validate: inputValidation
         },
         {
             type: 'list',
-            message: 'What shape would you like for your logo? [Required]',
+            message: 'What shape would you like for your logo? [Required]:',
             name: 'svgShape',
             choices: [
                 'square',
@@ -59,7 +59,7 @@ inquirer
         },
         {
             type: 'input',
-            message: 'What backgournd color would you like for your logo? [Required]',
+            message: 'What backgournd color would you like for your logo? [Required]:',
             name: 'svgShapeColor',
             validate: inputValidation
         }

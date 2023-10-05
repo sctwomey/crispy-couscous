@@ -25,7 +25,7 @@ class Circle extends svgShape {
 // This is the triangle child class for the shapes.
 class Triangle extends svgShape {
     render() {
-        return `<polygon points="150, 18 244, 182 56, 182" fill="${this.svgShapeColor}" />`
+        return `<polygon points="150 18, 244 182, 56 182" fill="${this.svgShapeColor}" />`
     };
 };
 
