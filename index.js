@@ -1,10 +1,10 @@
 // Included packages needed for this application.
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { Square, Circle, Triangle } = require('./libs/shapes.js');
+const { Square, Circle, Triangle } = require('./libs/shapes.js'); // Destructuring
 
 // This class provides the structure for the SVG logo.
-class userSVG {
+class renderUserSVG {
     constructor() {
         this.svgText;
         this.svgTextColor;
@@ -13,13 +13,7 @@ class userSVG {
     };
 
     setText(text, color) {
-
-        if (this.svgShape === 'triangle') {
-            this.svgText = `<text x="150" y="130" font-size="55" text-anchor="middle" fill="${color}">${text}</text>`;
-        } else {
-            this.svgText = `<text x="150" y="115" font-size="55" text-anchor="middle" fill="${color}">${text}</text>`;
-        };
-
+        this.svgText = `<text x="150" y="115" font-size="55" text-anchor="middle" fill="${color}">${text}</text>`;
     };
     setColor(color) {
         this.svgShapeColor = color;
@@ -67,11 +61,15 @@ inquirer
             validate: inputValidation
         }
     ])
-    .then(function ({ svgText, svgTextColor, svgShape, svgShapeColor }) {
-        const userSvg = new userSVG();
+    .then(function ({
+        svgText,
+        svgTextColor,
+        svgShape,
+        svgShapeColor }) {
+
+        const userSvg = new renderUserSVG();
 
         userSvg.setText(svgText, svgTextColor);
-        userSvg.setColor(svgShapeColor);
 
         // Set the shape based on user choice and its color in the SVG
         if (svgShape === 'square') {
