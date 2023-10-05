@@ -83,7 +83,7 @@ inquirer
         };
         userSvg.setText(svgText, svgTextColor);
 
-        fs.writeFile(`./examples/${svgShape}Logo.svg`, userSvg.render(), function (error) {
+        fs.writeFile(`./examples/${svgShape}-logo.svg`, userSvg.render(), function (error) {
             error ? console.log(error) : console.log("SVG File Write Success!");
         });
 
