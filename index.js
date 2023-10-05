@@ -12,14 +12,14 @@ class renderUserSVG {
         this.svgShapeColor;
     };
 
-    setText(text, color) {
-        this.svgText = `<text x="150" y="115" font-size="55" text-anchor="middle" fill="${color}">${text}</text>`;
-    };
     setColor(color) {
         this.svgShapeColor = color;
     };
     setShape(shape) {
         this.svgShape = shape.render();
+    };
+    setText(text, color) {
+        this.svgText = `<text x="150" y="125" font-size="55" text-anchor="middle" fill="${color}">${text}</text>`;
     };
 
     render() {
@@ -61,32 +61,26 @@ inquirer
             validate: inputValidation
         }
     ])
-    .then(function ({
-        svgText,
-        svgTextColor,
-        svgShape,
-        svgShapeColor }) {
+    .then(function ({ svgText, svgTextColor, svgShape, svgShapeColor }) {
 
         const userSvg = new renderUserSVG();
+        const userSquare = new Square();
+        const userCircle = new Circle();
+        const userTriangle = new Triangle();
 
+        if (svgShape === 'square') {
+            userSquare.setColor(svgShapeColor);
+            userSvg.setShape(userSquare);
+        } else if (svgShape === 'circle') {
+            userCircle.setColor(svgShapeColor);
+            userSvg.setShape(userCircle);
+        } else {
+            userTriangle.setColor(svgShapeColor);
+            userSvg.setShape(userTriangle);
+        };
         userSvg.setText(svgText, svgTextColor);
 
-        // Set the shape based on user choice and its color in the SVG
-        if (svgShape === 'square') {
-            const square = new Square();
-            square.setColor(svgShapeColor);
-            userSvg.setShape(square);
-        } else if (svgShape === 'circle') {
-            const circle = new Circle();
-            circle.setColor(svgShapeColor);
-            userSvg.setShape(circle);
-        } else {
-            const triangle = new Triangle();
-            triangle.setColor(svgShapeColor);
-            userSvg.setShape(triangle);
-        };
-
-        fs.writeFile('logo.svg', userSvg.render(), function (error) {
+        fs.writeFile('svgLogo.svg', userSvg.render(), function (error) {
             error ? console.log(error) : console.log("SVG File Write Success!");
         });
 
