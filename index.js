@@ -19,7 +19,7 @@ class renderUserSVG {
         this.svgShape = shape.render();
     };
     setText(text, color) {
-        this.svgText = `<text x="150" y="125" font-size="55" text-anchor="middle" fill="${color}">${text}</text>`;
+        this.svgText = `<text x="50%" y="50%" font-size="55" text-anchor="middle" dominant-baseline="middle" fill="${color}">${text}</text>`;
     };
 
     render() {
@@ -52,7 +52,6 @@ inquirer
                 'circle',
                 'triangle'
             ],
-            default: 'square'
         },
         {
             type: 'input',
