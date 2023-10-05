@@ -6,10 +6,10 @@ const { Square, Circle, Triangle } = require('./libs/shapes.js');
 // This class provides the structure for the SVG logo.
 class userSVG {
     constructor() {
-        this.svgText = "";
-        this.svgTextColor = "";
-        this.svgShape = "";
-        this.svgShapeColor = "";
+        this.svgText;
+        this.svgTextColor;
+        this.svgShape;
+        this.svgShapeColor;
     };
     setColor(color) {
         this.svgShapeColor = color;
@@ -18,7 +18,7 @@ class userSVG {
         this.svgShape = shape.render();
     };
     setText(text, color) {
-        this.svgText = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${color}">${text}</text>`;
+        this.svgText = `<text x="150" y="115" font-size="55" text-anchor="middle" fill="${color}">${text}</text>`;
     };
 
     render() {
@@ -31,28 +31,32 @@ inquirer
     .prompt([
         {
             type: 'input',
+            message: 'What upper and/or lowercase text would you like for your logo? [Max 3 text characters].',
             name: 'svgText',
-            message: 'What upper and/or lowercase text would you like for your logo? [Max 3 text characters].'
+            validate: textValidation
         },
         {
             type: 'input',
+            message: 'What color would you like for your text characters? [Required]',
             name: 'svgTextColor',
-            message: 'What color would you like for your text characters?'
+            validate: inputValidation
         },
         {
             type: 'list',
+            message: 'What shape would you like for your logo? [Required]',
             name: 'svgShape',
-            message: 'What shape would you like for your logo?',
             choices: [
                 'square',
                 'circle',
                 'triangle'
-            ]
+            ],
+            default: 'square'
         },
         {
             type: 'input',
+            message: 'What backgournd color would you like for your logo? [Required]',
             name: 'svgShapeColor',
-            message: 'What backgournd color would you like for your logo?'
+            validate: inputValidation
         }
     ])
     .then(function ({ svgText, svgTextColor, svgShape, svgShapeColor }) {
@@ -66,21 +70,37 @@ inquirer
             const square = new Square();
             square.setColor(svgShapeColor);
             userSvg.setShape(square);
-        } else if (svgShape === 'triangle') {
-            const triangle = new Triangle();
-            triangle.setColor(svgShapeColor);
-            userSvg.setShape(triangle);
-        } else {
+        } else if (svgShape === 'circle') {
             const circle = new Circle();
             circle.setColor(svgShapeColor);
             userSvg.setShape(circle);
+        } else {
+            const triangle = new Triangle();
+            triangle.setColor(svgShapeColor);
+            userSvg.setShape(triangle);
         };
 
-        // This is the for writing the SVG file.
-        fs.writeFile('logo.svg', userSvg.render(), function (err) {
-            if (err) throw err;
-
-            console.log('Successful SVG file generated!');
+        fs.writeFile('logo.svg', userSvg.render(), function (error) {
+            error ? console.log(error) : console.log("SVG File Write Success!");
         });
+
     });
 
+// Validation function for text characters from user input (from https://stackoverflow.com/questions/16275661/javascript-regex-matching-3-digits-and-3-letters).
+function textValidation(data) {
+
+    const textPattern = new RegExp("^[a-zA-Z]{3}$");
+
+    if (!textPattern.test(data)) {
+        return 'Please enter only three (3) text characters!';
+    };
+    return true;
+};
+
+// Validation for required user input that is not a url or email.
+function inputValidation(data) {
+    if (!data) {
+        return 'Please enter the required information!';
+    };
+    return true;
+};
