@@ -32,8 +32,8 @@ describe('Square', () => {
 // Testing a circle shape for a green fill color.
 describe('Circle', () => {
     describe('color', () => {
-
         it("should have a green fill color displayed in a circle shape", () => {
+
             const newCircle = `<circle cx="150" cy="100" r="80" fill="green" />`;
             const shape = new Circle();
 
