@@ -18,7 +18,7 @@ class Square extends svgShape {
 // This is the class for the SVG circle shape.
 class Circle extends svgShape {
     render() {
-        return `<circle cx="150" cy="100" r="50" fill="${this.svgShapeColor}" />`
+        return `<circle cx="150" cy="100" r="80" fill="${this.svgShapeColor}" />`
     };
 };
 

@@ -11,19 +11,27 @@ class userSVG {
         this.svgShape;
         this.svgShapeColor;
     };
+
+    setText(text, color) {
+
+        if (this.svgShape === 'triangle') {
+            this.svgText = `<text x="150" y="130" font-size="55" text-anchor="middle" fill="${color}">${text}</text>`;
+        } else {
+            this.svgText = `<text x="150" y="115" font-size="55" text-anchor="middle" fill="${color}">${text}</text>`;
+        };
+
+    };
     setColor(color) {
         this.svgShapeColor = color;
     };
     setShape(shape) {
         this.svgShape = shape.render();
     };
-    setText(text, color) {
-        this.svgText = `<text x="150" y="115" font-size="55" text-anchor="middle" fill="${color}">${text}</text>`;
-    };
 
     render() {
         return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">${this.svgShape}${this.svgText}</svg>`;
     };
+
 };
 
 // An array of questions for user input.
@@ -31,7 +39,7 @@ inquirer
     .prompt([
         {
             type: 'input',
-            message: 'What upper and/or lowercase text would you like for your logo? [Max 3 text characters].',
+            message: 'What upper and/or lowercase text would you like for your logo? [Maximum of 3 text characters].',
             name: 'svgText',
             validate: textValidation
         },
