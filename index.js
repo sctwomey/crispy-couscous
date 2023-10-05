@@ -1,7 +1,11 @@
 // Included packages needed for this application.
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { Square, Circle, Triangle } = require('./libs/shapes.js'); // Destructuring
+const {
+    Square,
+    Circle,
+    Triangle
+} = require('./libs/shapes.js'); // Destructuring
 
 // This class provides the structure for the SVG logo.
 class renderUserSVG {
@@ -23,7 +27,7 @@ class renderUserSVG {
     };
 
     render() {
-        return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">${this.svgShape}${this.svgText}</svg>`;
+        return `<svg version="1.1" height="200" width="300" xmlns="http://www.w3.org/2000/svg">${this.svgShape}${this.svgText}</svg>`;
     };
 
 };
@@ -79,7 +83,7 @@ inquirer
         };
         userSvg.setText(svgText, svgTextColor);
 
-        fs.writeFile('svgLogo.svg', userSvg.render(), function (error) {
+        fs.writeFile(`./examples/${svgShape}Logo.svg`, userSvg.render(), function (error) {
             error ? console.log(error) : console.log("SVG File Write Success!");
         });
 
