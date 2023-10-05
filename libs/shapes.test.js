@@ -1,5 +1,10 @@
 // This is to 'Require' the shapes classes for testing.
-const { Square, Circle, Triangle } = require('./shapes.js');
+const {
+    Square,
+    Circle,
+    Triangle
+} = require('./shapes.js');
+
 
 // Testing a triangle shape for a green fill color.
 describe('Triangle', () => {
