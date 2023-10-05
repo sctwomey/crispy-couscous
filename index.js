@@ -79,17 +79,23 @@ inquirer
         const userTriangle = new Triangle();
 
         if (svgShape === 'square') {
+
             userSquare.setColor(svgShapeColor);
             userSvg.setShape(userSquare);
             userSvg.setTextSquare(svgText, svgTextColor);
+
         } else if (svgShape === 'circle') {
+
             userCircle.setColor(svgShapeColor);
             userSvg.setShape(userCircle);
             userSvg.setTextCircle(svgText, svgTextColor);
+
         } else {
+
             userTriangle.setColor(svgShapeColor);
             userSvg.setShape(userTriangle);
             userSvg.setTextTriangle(svgText, svgTextColor);
+
         };
 
         fs.writeFile(`./examples/${svgShape}-logo.svg`, userSvg.render(), function (error) {
@@ -107,12 +113,15 @@ function textValidation(data) {
         return 'Please enter only three (3) text characters!';
     };
     return true;
+
 };
 
 // Validation for required user input that is not a url or email.
 function inputValidation(data) {
+
     if (!data) {
         return 'Please enter the required information!';
     };
     return true;
+
 };
