@@ -28,10 +28,10 @@ class renderUserSVG {
     };
     setTextCircle(text, color) {
         this.svgText = `<text x="50%" y="50%" font-size="55" text-anchor="middle" dominant-baseline="central" fill="${color}">${text}</text>`
-    }
+    };
     setTextTriangle(text, color) {
         this.svgText = `<text x="150" y="126" font-size="55" text-anchor="middle" dominant-baseline="middle" fill="${color}">${text}</text>`
-    }
+    };
 
     render() {
         return `<svg version="1.1" height="200" width="300" xmlns="http://www.w3.org/2000/svg">${this.svgShape}${this.svgText}</svg>`;
