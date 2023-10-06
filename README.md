@@ -7,7 +7,8 @@ An example of an SVG image is shown here.
 
 <img src="examples/circle-logo.svg" alt="SVG Example File Image" title="SVG Example File Screenshot">
 
-C:\Users\sctwo\Desktop\UNCC Bootcamp Information\workspace\10-OOP\02-Challenge\crispy-couscous\Challenge 10 - OOP SVG DEMO.webm
+
+[Challenge 10 - OOP SVG DEMO.webm](https://github.com/sctwomey/crispy-couscous/assets/9093766/fc4e66b5-3558-4d2c-9404-bf0d0d880e0e)
 
 ## Installation
 
