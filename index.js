@@ -9,7 +9,7 @@ const {
 
 
 // This class provides the structure for the SVG logo.
-class renderUserSVG {
+class RenderUserSVG {
     constructor() {
         this.svgText;
         this.svgTextColor;
@@ -73,7 +73,7 @@ inquirer
     ])
     .then(function ({ svgText, svgTextColor, svgShape, svgShapeColor }) {
 
-        const userSvg = new renderUserSVG();
+        const userSvg = new RenderUserSVG();
         const userSquare = new Square();
         const userCircle = new Circle();
         const userTriangle = new Triangle();
@@ -125,3 +125,5 @@ function inputValidation(data) {
     return true;
 
 };
+
+module.exports = RenderUserSVG;
