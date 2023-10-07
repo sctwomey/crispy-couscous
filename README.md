@@ -8,7 +8,7 @@ An example of an SVG image is shown here.
 <img src="examples/circle-logo.svg" alt="SVG Example File Image" title="SVG Example File Screenshot">
 
 
-[ApplicaitonDemo.webm](https://github.com/sctwomey/crispy-couscous/assets/9093766/d797cd1a-0d32-4317-8391-a20d3f36430b)
+[ApplicationDemoC10.webm](https://github.com/sctwomey/crispy-couscous/assets/9093766/c94b17f2-cb67-4938-8e6d-c1bdc9b568df)
 
 ## Installation
 
