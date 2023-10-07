@@ -12,7 +12,6 @@ const {
 class RenderUserSVG {
     constructor() {
         this.svgText;
-        this.svgTextColor;
         this.svgShape;
         this.svgShapeColor;
     };
